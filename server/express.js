@@ -5,7 +5,7 @@ const methodOverride = require('method-override')
 const logger = require('morgan')
 const helmet = require('helmet')
 
-module.exports = (server, dev) => {
+module.exports = (server, config) => {
   // Helmet helps you secure your Express servers by setting various HTTP headers
   // https://github.com/helmetjs/helmet
   server.use(helmet())
