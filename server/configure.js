@@ -6,6 +6,7 @@ const logger = require('morgan')
 const helmet = require('helmet')
 
 module.exports = (server, config) => {
+  const { dev, cookie } = config
   // Helmet helps you secure your Express servers by setting various HTTP headers
   // https://github.com/helmetjs/helmet
   server.use(helmet())
@@ -13,7 +14,7 @@ module.exports = (server, config) => {
   // Enable CORS with various options
   // https://github.com/expressjs/cors
   server.use(cors())
-  server.use(logger('dev'))
+  if (dev) server.use(logger('dev'))
 
   // Parse incoming request bodies
   // https://github.com/expressjs/body-parser
@@ -22,7 +23,7 @@ module.exports = (server, config) => {
 
   // Sessions
   server.use(session({
-    secret: 'super-secret-key',
+    secret: cookie.secret,
     resave: false,
     saveUninitialized: false,
     cookie: { maxAge: 60000 }

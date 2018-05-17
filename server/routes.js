@@ -11,5 +11,5 @@ module.exports = (server, config) => {
   // http://localhost:3000/api/v1/test
   routes.get('/test', (req, res) => res.json({ passed: true }))
 
-  server.use(`/${prefix}/${version}`, routes)
+  server.use(`/${prefix}/v${version}`, routes)
 }
