@@ -1,5 +1,3 @@
-// import React, { Component } from 'react'
-
 export default class extends React.Component {
   static getInitialProps ({ query: { id } }) {
     return { postId: id }

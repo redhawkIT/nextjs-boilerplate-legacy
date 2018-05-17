@@ -13,6 +13,7 @@
   "rules": {
     "import/first": 0,
     "global-require": 0,
-    "react/no-unused-prop-types": 0
+    "react/no-unused-prop-types": 0,
+    "react/react-in-jsx-scope": 0
   }
 }
