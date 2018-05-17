@@ -1,29 +1,24 @@
 const next = require('next')
 const express = require('express')
-const session = require('express-session')
-const bodyParser = require('body-parser')
+const initialize = require('./express')
+const routes = require('./routes')
 
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
 
+
 app.prepare().then(() => {
   const server = express()
-
-  server.use(bodyParser.json())
-  server.use(session({
-    secret: 'super-secret-key',
-    resave: false,
-    saveUninitialized: false,
-    cookie: { maxAge: 60000 }
-  }))
+  initialize(server, dev)
+  routes(server, dev)
+  server.get('*', (req, res) => handle(req, res))
 
   // Express app here:
   // https://github.com/mluberry/nextjs-express
-
-  server.get('*', (req, res) => {
-    return handle(req, res)
-  })
+  // server.get('*', (req, res) => {
+  //   return handle(req, res)
+  // })
 
   server.listen(3000, (err) => {
     if (err) throw err
