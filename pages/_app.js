@@ -2,7 +2,8 @@ import App, { Container } from 'next/app'
 import Link from 'next/link'
 
 import { NavigationDrawer, ListItem } from 'react-md'
-import { toolbarTitle } from '../constants'
+
+import '../styles/index.scss'
 
 const NavItem = (props) => (
   <Link key={props.as} href={props.href} as={props.as}>
@@ -36,12 +37,13 @@ export default class MyApp extends App {
     const { Component, pageProps } = this.props
     return <Container>
       <NavigationDrawer
-        contentId="app"
-        navItems={navItems}
+        contentId='app'
+        toolbarTitle='Fullstack Boilerplate'
+        drawerTitle='Navigation'
         mobileDrawerType={NavigationDrawer.DrawerTypes.TEMPORARY}
         tabletDrawerType={NavigationDrawer.DrawerTypes.FLOATING}
         desktopDrawerType={NavigationDrawer.DrawerTypes.FLOATING}
-        toolbarTitle={toolbarTitle}
+        navItems={navItems}
       >
         <Component {...pageProps} />
       </NavigationDrawer>

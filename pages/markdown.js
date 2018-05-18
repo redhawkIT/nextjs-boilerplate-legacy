@@ -1,20 +1,11 @@
-// import {Component} from 'react'
 import Link from 'next/link'
 import fetch from 'isomorphic-unfetch'
 
 export default class extends React.Component {
   static async getInitialProps ({ req, query }) {
-    // const res = await fetch('/_content/markdown', { headers: {'Accept': 'application/json' } })
-    //     const json = await res.json()
-    //     return { markdown: json }
-    // console.log('getInitialProps', req, query)
-    // const res = await fetch('/_content/markdown', { headers: {'Accept': 'application/json' } })
-    // const json = await res.json()
-    // return { json }
-    const baseUrl = req ? `${req.protocol}://${req.get('Host')}` : ''
-    const response = await fetch(baseUrl + '/_content/markdown', { headers: {'Accept': 'application/json' } })
-    // const json = await response.json()
-    return { response }
+    const res = await fetch('https://api.github.com/repos/zeit/next.js')
+    const json = await res.json()
+    return { stars: json.stargazers_count }
   }
   // static async getInitialProps ({ req, query }) {
   //   const isServer = !!req
