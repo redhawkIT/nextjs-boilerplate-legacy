@@ -1,6 +1,5 @@
 import Link from 'next/link'
 
-import '../styles/index.scss'
 export default () => (
   <ul>
     <li><Link href='/b' as='/b'><a>a</a></Link></li>

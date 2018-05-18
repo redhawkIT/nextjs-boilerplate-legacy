@@ -11,6 +11,7 @@ export default class MyDocument extends Document {
       <html>
         <Head>
           <link rel='stylesheet' href='/_next/static/style.css' />
+          <link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet' />
         </Head>
         <body>
           <Main />
