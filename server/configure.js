@@ -1,3 +1,4 @@
+const compression = require('compression')
 const session = require('express-session')
 const cors = require('cors')
 const bodyParser = require('body-parser')
@@ -14,6 +15,10 @@ module.exports = (server, config) => {
   // Enable CORS with various options
   // https://github.com/expressjs/cors
   server.use(cors())
+
+  // GZIP files
+  server.use(compression())
+  // Basic logger(dev)
   if (dev) server.use(logger('dev'))
 
   // Parse incoming request bodies
