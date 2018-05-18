@@ -20,9 +20,11 @@ app.prepare().then(() => {
 
   // Next.JS SSR handler
   // https://github.com/mluberry/nextjs-express
-  server.get('/item', (req, res) => {
-    const itemData = api.getItem()
-    app.render(req, res, '/item', { itemData })
+  // https://github.com/zeit/next.js/tree/canary/examples/pass-server-data
+  server.get('/markdown', (req, res) => {
+    console.log('/markdown req:', req)
+    const markdown = api.getMarkdown()
+    app.render(req, res, '/markdown', { markdown })
   })
   server.get('*', (req, res) => handle(req, res))
 

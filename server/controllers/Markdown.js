@@ -1,12 +1,10 @@
 const fs = require('fs')
+const frontMatter = require('front-matter')
 
-// In this case, data read from the fs, but it could also be a cached API result.
-const data = fs.readFileSync('./data/item.json', 'utf8')
-const parsedData = JSON.parse(data)
-
-function getItem () {
-  console.log('Requested Item Data:', data)
-  return parsedData
+const getMarkdown = (filename) => {
+  const markdown = fs.readFileSync('./content/test.md', 'utf8')
+  console.log('getMarkdown', filename, markdown)
+  return frontMatter(markdown)
 }
 
-module.exports = { getItem }
+module.exports = { getMarkdown }
