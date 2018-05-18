@@ -1,3 +1,3 @@
 module.exports = [
-  require('./error')
+  require('./Errors')
 ]

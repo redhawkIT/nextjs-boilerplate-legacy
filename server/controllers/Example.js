@@ -1,9 +1,9 @@
-const express = require('express')
-
-const Example = () => {
-  const router = new express.Router()
-  router.get('/example', (req, res) => res.json({ passed: true }))
-  return router
+module.exports = class Example {
+  constructor (router) {
+    router.get('/example', this.getData)
+  }
+  getData (req, res) {
+    const data = { example: true }
+    res.status(201).json(data)
+  }
 }
-
-module.exports = Example

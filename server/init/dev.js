@@ -1,6 +1,3 @@
-const https = require('https')
-const http = require('http')
-
 module.exports = (server, config) => {
   const { ports } = config
   server.listen(ports.dev, (err) => {
